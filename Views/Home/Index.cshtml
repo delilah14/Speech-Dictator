@@ -1,0 +1,76 @@
+﻿@model VoiceDictation.ViewModels.NotepadViewModel
+
+@{
+    Layout = null;
+
+
+}
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div style="float:left;min-width:800px">
+        <div class="card mb-3" style="max-width:300px;margin-left:50px;margin-right:30px;float:left">
+            <h3 class="card-header">Commands for the speech recognizer</h3>
+           
+            <img style="height: 200px; width: 70%; display: block;margin-left:50px" src="../images/microphone.png" alt="Card image">
+            <div class="card-body">
+                <p class="card-text">You can do alot just by speaking</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Speak</li>
+                <li class="list-group-item">Print your dictation to pdf</li>
+                <li class="list-group-item">Email your dictation</li>
+                
+            </ul>
+           
+            
+        </div>
+        <div class="card border-success mb-3" style="min-width:1000px;min-height:600px" >
+            <div class="card-header">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                    <a class="navbar-brand" href="#">iSpeak</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                   
+                </nav>
+            </div>
+            <div class="card-body" style="height:400px" contenteditable="true">
+
+
+                @ViewBag.message
+
+
+            </div>
+
+            <span>
+
+                <a class="btn btn-outline-warning" href="@Url.Action("RecognizeSpeechAsync", "Home")">Record</a>
+
+
+                <a class="btn btn-outline-warning" href="@Url.Action("print", "Home")">Print</a>
+                <a class="btn btn-outline-warning" href="mailto:dilluxdes@gmail.com?subject=&body=@ViewBag.message">Email</a>
+                <a class="btn btn-outline-warning" href="@Url.Action("Clear", "Home")">Clear</a>
+                
+            </span>
+
+        </div>
+
+
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
